@@ -6,9 +6,9 @@ import {
   useColorScheme
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import styled from 'styled-components/native';
-import { useDispatch } from 'react-redux';
-import { login } from '../reducers/loginSlice';
+import {useDispatch} from 'react-redux';
+import {logout} from '../reducers/loginSlice';
+import styled from 'styled-components/native'; 
 
 const StyledContainer = styled.View`
   alignItems: center;
@@ -28,7 +28,7 @@ const StyledButton = styled.TouchableOpacity`
   paddingVertical: 15px;
 `;
 
-const LoginScreen = ({navigation}) => {
+const Profile = ({navigation}) => {
   const dispatch = useDispatch();
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -37,20 +37,20 @@ const LoginScreen = ({navigation}) => {
     flex: 1,
   };
 
-  const loginCall = () => {
-    dispatch(login(true))
+  const logoutCall = () => {
+    dispatch(logout(false))
   }
 
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <StyledContainer>
-        <StyledButton onPress={loginCall}>
-          <Text>Login</Text>
+        <StyledButton onPress={logoutCall}>
+          <Text>Logout</Text>
         </StyledButton>
       </StyledContainer>
     </SafeAreaView>
   );
 };
 
-export default LoginScreen;
+export default Profile;

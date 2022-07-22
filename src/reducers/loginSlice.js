@@ -5,10 +5,10 @@ const loginSlice = createSlice({
   initialState: false,
   reducers: {
     login(state, action) {
-      state = action.payload;
+      return action.payload;
     },
     logout(state, action) {
-      state = action.payload;
+      return action.payload;
     },
   },
 });
