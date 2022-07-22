@@ -1,6 +1,6 @@
 # AwesomeProject
 
-This is a React Native prject with Redux toolkit example
+This is a React Native project with Redux toolkit example
 
 Includes - 
   1. Redux Toolkit
