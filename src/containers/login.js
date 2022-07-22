@@ -11,7 +11,7 @@ const LoginScreen = ({navigation}) => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <Text onPress={() => navigation.navigate('Home')}>Login</Text>
+      <Text onPress={() => navigation.navigate('HomeMain')}>Login</Text>
     </SafeAreaView>
   );
 };

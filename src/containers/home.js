@@ -15,6 +15,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Card from '../components/card';
 
 const HomeScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -54,50 +55,13 @@ const HomeScreen = ({navigation}) => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView>
         {products.map(item => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate('DetailsScreen', {item})}
+          <Card
             key={item.title}
-            style={{
-              backgroundColor: 'white',
-              margin: 15,
-              padding: 15,
-              marginBottom: 0,
-              borderWidth: 1,
-              borderColor: 'white',
-              borderRadius: 5,
-              shadowColor: '#52006A',
-              elevation: 20,
-              flexDirection: 'row',
-              flex: 1,
-            }}>
-            <View
-              style={{
-                flex: 1,
-              }}>
-              <Image
-                resizeMode="center"
-                source={{uri: item.image}}
-                style={{height: 150, width: 150}}
-              />
-            </View>
-            <View style={{flex: 1, justifyContent: 'space-between'}}>
-              <Text numberOfLines={2} style={{fontSize: 15, fontWeight: '500'}}>
-                {item.title}
-              </Text>
-              <Text>${item.price}</Text>
-              <TouchableOpacity
-                onPress={() => handleAdd(item)}
-                style={{
-                  padding: 10,
-                  borderColor: 'gray',
-                  borderWidth: 2,
-                  borderRadius: 5,
-                  alignItems: 'center',
-                }}>
-                <Text>{'Add To Cart'}</Text>
-              </TouchableOpacity>
-            </View>
-          </TouchableOpacity>
+            item={item}
+            handleAdd={handleAdd}
+            onClick={item => navigation.navigate('DetailsScreen', {item})}
+            buttonTitle={"Add to Card"}
+          />
         ))}
       </ScrollView>
     </SafeAreaView>
