@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {add} from '../reducers/cartSlice';
 import {fetchProducts} from '../reducers/productSlice';
@@ -9,10 +9,7 @@ import {
   StatusBar,
   Text,
   useColorScheme,
-  View,
-  ScrollView,
-  Image,
-  TouchableOpacity,
+  ScrollView
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Card from '../components/card';
