@@ -14,4 +14,6 @@ Upcoming -
   3. Theme
   4.Other configration
 
-Feel free to add more fetures
+Feel free to add more fetures.
+
+Provide version number.
