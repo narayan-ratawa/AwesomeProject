@@ -4,6 +4,8 @@ import {
   StatusBar,
   useColorScheme,
   ScrollView,
+  Text,
+  Image,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {remove} from '../reducers/cartSlice';
@@ -27,6 +29,14 @@ const CartScreen = ({navigation}) => {
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView>
+        {products.length === 0 && (
+          <Image
+            style={{height: 300, width: 300, alignSelf: 'center'}}
+            source={{
+              uri: 'https://shop.millenniumbooksource.com/static/images/cart1.png',
+            }}
+          />
+        )}
         {products.map((item, index) => (
           <Card
             key={item.title}

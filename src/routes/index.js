@@ -2,6 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useSelector} from 'react-redux';
 import HomeScreen from '../containers/home';
 import Details from '../containers/details';
@@ -41,14 +42,29 @@ const CartStack = () => {
 const Home = () => {
   const products = useSelector(state => state.cart);
   return (
-    <Tab.Navigator screenOptions={{headerShown: false}}>
+    <Tab.Navigator
+      screenOptions={({route}) => ({
+        tabBarIcon: ({focused, color, size}) => {
+          let iconName = 'home';
+          
+          if (route.name === 'Cart') {
+            iconName = 'cart';
+          } else if (route.name === 'Profile') {
+            iconName = 'account-settings';
+          }
+
+          // You can return any component that you like here!
+          return <MaterialCommunityIcons name={iconName} color={color} size={size} />;
+        },
+        headerShown: false,
+      })}>
       <Tab.Screen name="Home" component={HomeStack} />
       <Tab.Screen
         name="Cart"
         component={CartStack}
         options={{tabBarBadge: products.length}}
       />
-      <Tab.Screen name="profile" component={Profile} />
+      <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
 };
